@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  eaxmple-service:
+    build:
+      context: ./
+    ports:
+      - 3001:3000
+      - 9001:9229
+    command: npm run start:debug
+    volumes:
+      - ./src:/app/src:z
+    env_file:
+      - .env.example
+    networks:
+      - example-network
+networks:
+  example-network:
+    external:
+      name: example-network
